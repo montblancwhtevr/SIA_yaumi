@@ -214,11 +214,33 @@ checkUser();
 
                 <div class="form-group" style="padding-bottom: 10px;">
                   <tr>  
+                  <td><label for="tahun Ajaran">Tahun Ajaran</label></td>
+                    <td>
+                        <select name="tahun_ajaran" id="tahun_ajaran" class="formcontrol">
+                             <?php  
+                                $q = mysql_query("SELECT * FROM tahun");
+                                while ($rows = mysql_fetch_array($q)) {
+                                  if($rows[3] == 'aktif'){
+                                    echo "<option value='$rows[1]' selected>$rows[2]</option>";
+                                  }else{
+                                    echo "<option value='$rows[1]'>$rows[2]</option>";
+                                  }
+                                }
+                            ?>
+                        </select>                        
+                    </td>
+                  </tr>
+                </div>
+
+                <div class="form-group" style="padding-bottom: 10px;">
+                  <tr>  
                   <td><label for="Status">Status</label></td>
                   <td><input type="radio" name="status" value="aktif" checked/> Aktif
                       <input type="radio" name="status" value="nonaktif" /> Nonaktif</td>
                   </tr>
                 </div>
+
+                
 
                 <div class="form-group" style="padding-bottom: 10px;">
                   <tr>  

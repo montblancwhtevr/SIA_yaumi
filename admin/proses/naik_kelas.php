@@ -7,9 +7,12 @@
 include "koneksi.php";
 $jumlah = count($_POST["naik"]);
 
+echo $jumlah;
+
 for ($i=0; $i < $jumlah; $i++) { 
 
 	$id_siswa[$i] = $_POST["naik"][$i];
+	echo "idne".$id_siswa[$i]."<br>";
 
 	$sql_kelas 	= mysql_query("SELECT kelas.kode_kelas FROM kelas
 		INNER JOIN siswa ON siswa.kode_kelas = kelas.kode_kelas
@@ -22,7 +25,7 @@ for ($i=0; $i < $jumlah; $i++) {
 	}
 
     if ($sql) {
-        header('location:../data_akademik.php');
+        // header('location:../data_akademik.php');
 
     }else {
         echo "salah";

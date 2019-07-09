@@ -107,7 +107,7 @@ checkUser();
                                 $result = mysql_query($sql);;
                                 while($row=mysql_fetch_array($result)){?>
                                     <tr>
-                                    <td align='center'><input type="checkbox" name='naik[]' value="<?php echo $row['id_siswa'] ?>"></td>
+                                    <td align='center'><input type="checkbox" id="naik[]" name='naik[]' value="<?php echo $row['id_siswa'] ?>"></td>
                                     <td><?php echo $row['nis'];?></td>
                                     <td><?php echo $row['nama'];?></td>
                                     <td><?php echo $row['gender'];?></td>

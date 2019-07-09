@@ -36,9 +36,9 @@ if(isset($_POST['save'])){
   if (!empty($_FILES["foto"]["tmp_name"]))
   {
     $jenis_gambar=$_FILES['foto']['type'];
-    $nama=$_POST['nama'];
+    // $nama=$_POST['nama'];
     $nis = $_POST['nis'];
-    $nama = $_POST['nama'];
+    $nama = $_POST['nama']; 
     $username = $_POST['username'];
     $password = $_POST['password'];
     $gender = $_POST['gender'];   
@@ -47,13 +47,17 @@ if(isset($_POST['save'])){
     $alamat = $_POST['alamat'];
     $kelas = $_POST['kelas'];
     $status = $_POST['status'];
+    $tahun_ajaran = $_POST['tahun_ajaran'];
     if($jenis_gambar=="image/jpeg" || $jenis_gambar=="image/jpg" || $jenis_gambar=="image/gif" ||$jenis_gambar=="image/x-png")
     {           
         $gambar = $namafolder . basename($_FILES['foto']['name']);       
         if (move_uploaded_file($_FILES['foto']['tmp_name'], $gambar)) {
-            header('location:../data_siswa.php');
-            $sql="INSERT INTO siswa  VALUES (NULL,'$nis','$nama','$username','$password','$gender','$tanggal','$agama','$alamat','$kelas','$status','$gambar')";
+            // header('location:../data_siswa.php');
+            $sql="INSERT INTO siswa  VALUES (NULL,'$nis','$nama','$username','$password','$gender','$tanggal','$agama','$alamat','$kelas','$status','$gambar', '$tahun_ajaran')";
             $res=mysql_query($sql) or die (mysql_error());
+            if($res){
+                header('location:../data_siswa.php');
+            }
         } else {
            echo "Gambar gagal dikirim";
         }
